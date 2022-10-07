@@ -1,0 +1,16 @@
+.heContent{
+    height: 15%;
+    width:77%;
+    margin-left: 23%;
+    background-color: rgb(126, 81, 22);
+    position: absolute;
+}
+
+.heSearch{
+    margin:2vw 0vw 0vw 1.5vw;
+    height: 2.5vw;
+    width:17vw;
+    border-radius: 0.5vw;
+    border:0.1vw;
+    border-color: blue;
+}
