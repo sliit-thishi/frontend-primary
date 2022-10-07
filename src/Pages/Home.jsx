@@ -28,6 +28,7 @@ import Settings from './Settings';
 
     function onclickMeeting(){
       if(!logicMeeting){
+        setLogicAssignedEmployees(false)
         setLogicMeeting(true)
         setMeetingCol("#8498B1")
         setAssignedEmployeeCol("rgb(3, 122, 122)")
