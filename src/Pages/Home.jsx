@@ -1,12 +1,18 @@
 import React from 'react';
-import EmployeeCard from './EmployeeCard';
 
 import './NavBar.css';
 import './Header.css';
+
 import { ContainerOutlined } from '@ant-design/icons';
 import './Home.css';
-import videoIcon from '../Resources/Icon.png'
 import { useState } from 'react';
+
+import Meetings from './Meetings';
+import AssignedEmployees from './AssignedEmployees';
+import Dashboard from './Dashboard';
+import MonitorEmployees from './MonitorEmployees';
+import Reports from './Reports';
+import Settings from './Settings';
 
 
 
@@ -70,57 +76,7 @@ import { useState } from 'react';
 
           {/* Sub content - Meetings */}
           {logicMeeting&&<div className='hSubContent'>
-
-            <div className='hLeftSubContent'>
-              <div className='hMeetingOptions'>
-                  <div className='hOptions'>
-                    <table>
-                      <tr>
-                        <td>
-                          <div className='hOptionCard'>
-                            <img className='hOptionImg' src={videoIcon}></img>
-                            <h2 className='hOptionTitle'>Start Meeting</h2>
-                          </div>
-                        </td>
-                        <td>
-                          <div className='hOptionCard'>
-                            <img className='hOptionImg' src={videoIcon}></img>
-                            <h2 className='hOptionTitle'>Start Meeting</h2>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div className='hOptionCard'>
-                            <img className='hOptionImg' src={videoIcon}></img>
-                            <h2 className='hOptionTitle'>Start Meeting</h2>
-                          </div>
-                        </td>
-                        <td>
-                          <div className='hOptionCard'>
-                            <img className='hOptionImg' src={videoIcon}></img>
-                            <h2 className='hOptionTitle'>Start Meeting</h2>
-                          </div>
-                        </td>
-                      </tr>
-                    </table>
-
-                  </div>
-                
-              </div>
-
-              <div className='hMeetingProgress'>
-                        <div className='hProgressCard'>
-                            <button className='hLeaveBtn'>Leave</button>
-                            <h2 className='hProgressTitle'>Meeting Progress</h2>
-                        </div>
-              </div>
-            </div>
-
-            <div className='hRightSubContent'>
-              <EmployeeCard/>
-            </div>
-
+              <Meetings/>
           </div>}
           {/* End of Sub Content - Meetings*/}
 
