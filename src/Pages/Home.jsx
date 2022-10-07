@@ -30,6 +30,7 @@ import Settings from './Settings';
       if(!logicMeeting){
         setLogicMeeting(true)
         setMeetingCol("#8498B1")
+        setAssignedEmployeeCol("rgb(3, 122, 122)")
       }
       else{
         setLogicMeeting(false)
@@ -42,6 +43,7 @@ import Settings from './Settings';
       if(!logicAssignedEmployees){
         setLogicAssignedEmployees(true)
         setAssignedEmployeeCol("#8498B1")
+        setMeetingCol("rgb(3, 122, 122)")
       }
       else{
         setLogicAssignedEmployees(false)
