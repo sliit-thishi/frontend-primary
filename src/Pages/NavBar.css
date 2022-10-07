@@ -1,0 +1,30 @@
+.nFullContent{
+    height:47.5vw;
+    width:23%;
+    background-color: rgb(3, 122, 122);
+
+}
+
+.nContent{
+    background-color: rgb(217, 223, 223);
+    border-radius: 0px 10px 10px 0px;
+    margin:0vw 1vw 1vw 1vw;
+    height: 43vw;
+    width:93%;
+}
+
+.nItemList{
+    list-style-type: none;
+}
+
+li{
+    color: rgb(3, 122, 122);
+    font-size: 1.4vw;
+    font-weight: 700;
+    padding-top: 3vw;
+}
+
+li:hover{
+    color: rgb(4, 73, 73);
+}
+
