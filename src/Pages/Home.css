@@ -83,9 +83,16 @@
     margin-right: 1vw;
 }
 
+.hSearchContent{
+    height: 10vw;
+    width: 38vw;
+    background-color: bisque;
+}
+
 .hSearchTitle{
     font-size: 1.6vw;
     color:  rgb(1, 53, 53);
     font-weight: 600;
     padding-left: 3vw;
 }
+

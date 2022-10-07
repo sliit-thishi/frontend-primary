@@ -26,5 +26,6 @@ li{
 
 li:hover{
     color: rgb(4, 73, 73);
+    cursor: pointer;
 }
 
