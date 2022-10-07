@@ -1,7 +1,7 @@
 .hFullScreen{
     width:100vw;
     height: 100vh;
-    background-color: rgb(193, 197, 196);
+    background-color: #F2F7F6;
 }
 
 .hSubContent{
@@ -10,29 +10,32 @@
     top:15%;
     left: 23%;
     position: absolute;
-    background-color: aquamarine;
+    background-color: #F2F7F6;
 }
 
 .hLeftSubContent{
     position: absolute;
     height: 100%;
     width: 65%;
-    background-color: azure;
+    background-color: #F2F7F6;
 }
 
 .hRightSubContent{
     position: absolute;
     height: 100%;
-    width: 35%;
+    width: 34%;
     left: 65%;
-    background-color: rgb(209, 223, 148);
+    margin-right: 2vw;
+    border-radius: 1vw;
+    background-color: #e9f3f1;
+    box-shadow: 0vw 0vw 0.1vw 0vw #5e7e7e ;
 }
 
 .hMeetingOptions{
     position: absolute;
     height: 60%;
     width: 100%;
-    background-color: rgb(56, 61, 31);
+    background-color: #F2F7F6;
 }
 
 .hMeetingProgress{
@@ -40,7 +43,8 @@
     height: 40%;
     width: 100%;
     top:60%;
-    background-color: rgb(219, 188, 203);
+    box-shadow: 0.3vw 0.3vw 0.3vw 0.3vw #d5dddd ;
+    background-color: #e9f3f1;
 }
 
 .hOptionCard{
@@ -50,7 +54,8 @@
     border-radius: 10px;
     border-width: 2px;
     border-color: black;
-    background-color: rgb(168, 168, 151);
+    background-color: #e9f3f1;
+    box-shadow: 0.3vw 0.3vw #d5dddd;
 }
 
 .hOptionImg{
@@ -60,14 +65,14 @@
 }
 
 .hOptionTitle{
-    font-size: 2vw;
-    color: rgb(4, 85, 85);
+    font-size: 1.6vw;
+    color: #066B66;
     text-align: center;
 }
 
 .hProgressTitle{
     font-size: 1.8vw;
-    color: rgb(4, 85, 85);
+    color: #066B66;
     text-align: center;
     padding-top: 7vw;
 }
@@ -91,7 +96,7 @@
 
 .hSearchTitle{
     font-size: 1.6vw;
-    color:  rgb(1, 53, 53);
+    color:  #1FAFA8;
     font-weight: 600;
     padding-left: 3vw;
 }

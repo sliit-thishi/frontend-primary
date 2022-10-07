@@ -3,7 +3,8 @@ import React from 'react';
 import './NavBar.css';
 import './Header.css';
 
-import { ContainerOutlined } from '@ant-design/icons';
+
+import { ContainerOutlined,SearchOutlined } from '@ant-design/icons';
 import './Home.css';
 import { useState } from 'react';
 
@@ -23,19 +24,19 @@ import Settings from './Settings';
     const onSearch = (value) => console.log(value);
     const [logicMeeting , setLogicMeeting] = useState(false);
     const [logicAssignedEmployees , setLogicAssignedEmployees] = useState(false);
-    const [meetingCol , setMeetingCol] = useState("rgb(3, 122, 122)")
-    const [AssignedEmployeeCol , setAssignedEmployeeCol] = useState("rgb(3, 122, 122)")
+    const [meetingCol , setMeetingCol] = useState(" #1FAFA8")
+    const [AssignedEmployeeCol , setAssignedEmployeeCol] = useState(" #1FAFA8")
 
     function onclickMeeting(){
       if(!logicMeeting){
         setLogicAssignedEmployees(false)
         setLogicMeeting(true)
-        setMeetingCol("#8498B1")
-        setAssignedEmployeeCol("rgb(3, 122, 122)")
+        setMeetingCol("#066B66")
+        setAssignedEmployeeCol(" #1FAFA8")
       }
       else{
         setLogicMeeting(false)
-        setMeetingCol("rgb(3, 122, 122)")
+        setMeetingCol(" ")
       }
      
     }
@@ -43,12 +44,12 @@ import Settings from './Settings';
     function onclickAssignedEmployees(){
       if(!logicAssignedEmployees){
         setLogicAssignedEmployees(true)
-        setAssignedEmployeeCol("#8498B1")
-        setMeetingCol("rgb(3, 122, 122)")
+        setAssignedEmployeeCol("#066B66")
+        setMeetingCol("#1FAFA8")
       }
       else{
         setLogicAssignedEmployees(false)
-        setAssignedEmployeeCol("rgb(3, 122, 122)")
+        setAssignedEmployeeCol("#1FAFA8")
       }
      
     }
@@ -78,13 +79,21 @@ import Settings from './Settings';
 
           {/* Header Part */}
           <div className="heContent">
-             <div style={{width:'50%',height:'100%', position:'absolute', backgroundColor:'white'}}>
-                <h1>Title</h1>
+             <div style={{width:'40%',height:'100%', position:'absolute', backgroundColor:'#F2F7F6'}}>
+                <h1 className='hOptionTitle' style={{float:'left', paddingLeft:'2vw'}}>Meetings</h1>
              </div>
-             <div style={{width:'30%',height:'100%', marginLeft:'50%', position:'absolute', backgroundColor:'green'}}>
-               <input className='heSearch' placeholder="input search text" onSearch={onSearch}  /> Search
+             <div style={{width:'40%',height:'100%', marginLeft:'40%', position:'absolute'}}>
+              <table>
+                <tr>
+                  <td> <input className='heSearch' placeholder="input search text"  /> </td> 
+                  <td style={{paddingTop:'1.2vw'}}><SearchOutlined 
+                    onClick={onSearch}
+                      style={{backgroundColor:'#1FAFA8', fontSize:'2vw', height:'2.2vw', width:'4vw', borderRadius:'1vw', color:'white', paddingTop:'0.4vw'}} 
+                      /></td> 
+                </tr>
+                </table>
              </div>
-             <div style={{width:'20%',height:'100%', marginLeft:'80%',position:'absolute', backgroundColor:'white'}}>
+             <div style={{width:'20%',height:'100%', marginLeft:'80%',position:'absolute', backgroundColor:'#F2F7F6'}}>
              <h3>bell icon      image</h3>
              </div>
         

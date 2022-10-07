@@ -1,12 +1,12 @@
 .nFullContent{
     height:47.5vw;
     width:23%;
-    background-color: rgb(3, 122, 122);
+    background-color: #1FAFA8;
     position: absolute;
 }
 
 .nContent{
-    background-color: rgb(217, 223, 223);
+    background-color: #F2F7F6;
     border-radius: 0px 10px 10px 0px;
     margin:0vw 1vw 1vw 1vw;
     height: 43vw;
@@ -18,14 +18,14 @@
 }
 
 li{
-    color: rgb(3, 122, 122);
+    color: #1FAFA8;
     font-size: 1.4vw;
     font-weight: 700;
     padding-top: 3vw;
 }
 
 li:hover{
-    color: rgb(4, 73, 73);
+    opacity: 0.5;;
     cursor: pointer;
 }
 
