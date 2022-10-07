@@ -1,13 +1,12 @@
 import React from 'react';
-import NavBar from './NavBar';
-import Header from './Header';
+import EmployeeCard from './EmployeeCard';
+
 import './NavBar.css';
 import './Header.css';
-import {
-    ContainerOutlined,
-   
-  } from '@ant-design/icons';
+import { ContainerOutlined } from '@ant-design/icons';
 import './Home.css';
+import videoIcon from '../Resources/Icon.png'
+import { useState } from 'react';
 
 
 
@@ -16,6 +15,20 @@ import './Home.css';
   function Home() {
 
     const onSearch = (value) => console.log(value);
+    const [logicMeeting , setLogicMeeting] = useState(false);
+    const [meetingCol , setMeetingCol] = useState("rgb(3, 122, 122)")
+
+    function onclickMeeting(){
+      if(!logicMeeting){
+        setLogicMeeting(true)
+        setMeetingCol("yellow")
+      }
+      else{
+        setLogicMeeting(false)
+        setMeetingCol("rgb(3, 122, 122)")
+      }
+     
+    }
 
     return (
       <div className='hFullScreen'>
@@ -28,7 +41,7 @@ import './Home.css';
                 <ul className="nItemList">
                     <li><ContainerOutlined/>Dashboard</li>
                     <li><ContainerOutlined/>Assigned Employees</li>
-                    <li><ContainerOutlined/>Meetings</li>
+                    <li onClick={onclickMeeting} style={{color:meetingCol}}><ContainerOutlined/>Meetings</li>
                     <li><ContainerOutlined/>Reports</li>
                     <li><ContainerOutlined/>Monitor Employees</li>
                     <li><ContainerOutlined/>Settings</li>
@@ -56,20 +69,59 @@ import './Home.css';
           {/* End of Header part */}
 
           {/* Sub content - Meetings */}
-          <div className='hSubContent'>
+          {logicMeeting&&<div className='hSubContent'>
+
             <div className='hLeftSubContent'>
               <div className='hMeetingOptions'>
+                  <div className='hOptions'>
+                    <table>
+                      <tr>
+                        <td>
+                          <div className='hOptionCard'>
+                            <img className='hOptionImg' src={videoIcon}></img>
+                            <h2 className='hOptionTitle'>Start Meeting</h2>
+                          </div>
+                        </td>
+                        <td>
+                          <div className='hOptionCard'>
+                            <img className='hOptionImg' src={videoIcon}></img>
+                            <h2 className='hOptionTitle'>Start Meeting</h2>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div className='hOptionCard'>
+                            <img className='hOptionImg' src={videoIcon}></img>
+                            <h2 className='hOptionTitle'>Start Meeting</h2>
+                          </div>
+                        </td>
+                        <td>
+                          <div className='hOptionCard'>
+                            <img className='hOptionImg' src={videoIcon}></img>
+                            <h2 className='hOptionTitle'>Start Meeting</h2>
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
 
+                  </div>
+                
               </div>
+
               <div className='hMeetingProgress'>
-
+                        <div className='hProgressCard'>
+                            <button className='hLeaveBtn'>Leave</button>
+                            <h2 className='hProgressTitle'>Meeting Progress</h2>
+                        </div>
               </div>
             </div>
-            <div className='hRightSubContent'>
 
+            <div className='hRightSubContent'>
+              <EmployeeCard/>
             </div>
 
-          </div>
+          </div>}
           {/* End of Sub Content - Meetings*/}
 
 

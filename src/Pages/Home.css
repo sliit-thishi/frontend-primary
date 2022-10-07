@@ -35,10 +35,50 @@
     background-color: rgb(56, 61, 31);
 }
 
-.hMeetingOptions{
+.hMeetingProgress{
     position: absolute;
     height: 40%;
     width: 100%;
     top:60%;
     background-color: rgb(219, 188, 203);
+}
+
+.hOptionCard{
+    height:9vw;
+    width:22vw;
+    margin:2vw 0vw 0vw 2vw;
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: black;
+    background-color: rgb(168, 168, 151);
+}
+
+.hOptionImg{
+    height: 4vw;
+    width:4vw;
+    margin-left: 40%;
+}
+
+.hOptionTitle{
+    font-size: 2vw;
+    color: rgb(4, 85, 85);
+    text-align: center;
+}
+
+.hProgressTitle{
+    font-size: 1.8vw;
+    color: rgb(4, 85, 85);
+    text-align: center;
+    padding-top: 7vw;
+}
+
+.hLeaveBtn{
+    height: 2vw;
+    width: 7vw;
+    border-radius: 1vw;
+    background-color: red;
+    color: white;
+    border: none;
+    float: right;
+    margin-right: 1vw;
 }
