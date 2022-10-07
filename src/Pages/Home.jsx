@@ -55,11 +55,22 @@ import './Home.css';
           </div>
           {/* End of Header part */}
 
-          {/* Sub content */}
-          <div>
+          {/* Sub content - Meetings */}
+          <div className='hSubContent'>
+            <div className='hLeftSubContent'>
+              <div className='hMeetingOptions'>
+
+              </div>
+              <div className='hMeetingProgress'>
+
+              </div>
+            </div>
+            <div className='hRightSubContent'>
+
+            </div>
 
           </div>
-          {/* End of Sub Content */}
+          {/* End of Sub Content - Meetings*/}
 
 
         </div>

@@ -3,3 +3,42 @@
     height: 100vh;
     background-color: rgb(193, 197, 196);
 }
+
+.hSubContent{
+    height: 85%;
+    width: 77%;
+    top:15%;
+    left: 23%;
+    position: absolute;
+    background-color: aquamarine;
+}
+
+.hLeftSubContent{
+    position: absolute;
+    height: 100%;
+    width: 65%;
+    background-color: azure;
+}
+
+.hRightSubContent{
+    position: absolute;
+    height: 100%;
+    width: 35%;
+    left: 65%;
+    background-color: rgb(209, 223, 148);
+}
+
+.hMeetingOptions{
+    position: absolute;
+    height: 60%;
+    width: 100%;
+    background-color: rgb(56, 61, 31);
+}
+
+.hMeetingOptions{
+    position: absolute;
+    height: 40%;
+    width: 100%;
+    top:60%;
+    background-color: rgb(219, 188, 203);
+}
