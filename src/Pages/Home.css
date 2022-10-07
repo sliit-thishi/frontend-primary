@@ -22,13 +22,13 @@
 
 .hRightSubContent{
     position: absolute;
-    height: 100%;
+    height: 98%;
     width: 34%;
     left: 65%;
     margin-right: 2vw;
     border-radius: 1vw;
     background-color: #e9f3f1;
-    box-shadow: 0vw 0vw 0.1vw 0vw #5e7e7e ;
+    box-shadow: 0.1vw 0.2vw 0.1vw 0.1vw #d5dddd ;
 }
 
 .hMeetingOptions{
@@ -40,10 +40,12 @@
 
 .hMeetingProgress{
     position: absolute;
-    height: 40%;
-    width: 100%;
-    top:60%;
-    box-shadow: 0.3vw 0.3vw 0.3vw 0.3vw #d5dddd ;
+    height: 36%;
+    width: 96%;
+    top:61%;
+    border-radius: 12px;
+    margin-left: 1vw;
+    box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #d5dddd;
     background-color: #e9f3f1;
 }
 
@@ -51,41 +53,39 @@
     height:9vw;
     width:22vw;
     margin:2vw 0vw 0vw 2vw;
-    border-radius: 10px;
+    border-radius: 12px;
     border-width: 2px;
     border-color: black;
     background-color: #e9f3f1;
     box-shadow: 0.3vw 0.3vw #d5dddd;
+    cursor: pointer;
 }
 
-.hOptionImg{
-    height: 4vw;
-    width:4vw;
-    margin-left: 40%;
-}
+
 
 .hOptionTitle{
-    font-size: 1.6vw;
+    font-size: 1.4vw;
     color: #066B66;
     text-align: center;
 }
 
 .hProgressTitle{
-    font-size: 1.8vw;
+    font-size: 1.3vw;
     color: #066B66;
     text-align: center;
-    padding-top: 7vw;
+    padding-top: 5vw;
 }
 
 .hLeaveBtn{
     height: 2vw;
     width: 7vw;
     border-radius: 1vw;
-    background-color: red;
+    background-color: rgb(216, 9, 9);
     color: white;
     border: none;
     float: right;
     margin-right: 1vw;
+    cursor: pointer;
 }
 
 .hSearchContent{

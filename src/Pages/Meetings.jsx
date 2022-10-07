@@ -1,7 +1,8 @@
 import React from "react";
 
+import { AudioOutlined,CommentOutlined, UsergroupAddOutlined,ChromeOutlined, ExpandOutlined ,CalendarOutlined , PlusCircleOutlined, FieldTimeOutlined, VideoCameraOutlined  } from '@ant-design/icons';
+
 import EmployeeCard from './EmployeeCard';
-import videoIcon from '../Resources/Icon.png';
 import './Home.css';
 
 function Meetings()
@@ -16,13 +17,15 @@ function Meetings()
                       <tr>
                         <td>
                           <div className='hOptionCard'>
-                            <img className='hOptionImg' src={videoIcon}></img>
+                          <VideoCameraOutlined  
+                                  style={{fontSize:'4vw',  color:'#1FAFA8', margin:'1vw 0vw 0vw 8vw'}} />
                             <h2 className='hOptionTitle'>Start Meeting</h2>
                           </div>
                         </td>
                         <td>
                           <div className='hOptionCard'>
-                            <img className='hOptionImg' src={videoIcon}></img>
+                          <PlusCircleOutlined   
+                                  style={{fontSize:'4vw',  color:'#1FAFA8', margin:'1vw 0vw 0vw 8vw'}} />
                             <h2 className='hOptionTitle'>Join Meeting</h2>
                           </div>
                         </td>
@@ -30,13 +33,15 @@ function Meetings()
                       <tr>
                         <td>
                           <div className='hOptionCard'>
-                            <img className='hOptionImg' src={videoIcon}></img>
+                          <CalendarOutlined  
+                                  style={{fontSize:'4vw',  color:'#1FAFA8', margin:'1vw 0vw 0vw 8vw'}} />
                             <h2 className='hOptionTitle'>Scheduled Meetings</h2>
                           </div>
                         </td>
                         <td>
                           <div className='hOptionCard'>
-                            <img className='hOptionImg' src={videoIcon}></img>
+                          <FieldTimeOutlined  
+                                  style={{fontSize:'4vw',  color:'#1FAFA8', margin:'1vw 0vw 0vw 8vw'}} />
                             <h2 className='hOptionTitle'>Meeting History</h2>
                           </div>
                         </td>
@@ -49,8 +54,33 @@ function Meetings()
 
               <div className='hMeetingProgress'>
                         <div className='hProgressCard'>
+                            <ExpandOutlined 
+                            style={{fontSize:'2vw',  color:'#1FAFA8', float:'left', marginLeft:'2vw'}} />
                             <button className='hLeaveBtn'>Leave</button>
                             <h2 className='hProgressTitle'>Meeting Inprogress</h2>
+                            <center>
+                              <table>
+                                <tr>
+                                <td>
+                                  <UsergroupAddOutlined 
+                                      style={{fontSize:'2vw',  color:'#1FAFA8', marginLeft:'2vw'}} />
+                                  </td>
+                                  <td>
+                                  <AudioOutlined 
+                                      style={{fontSize:'2vw',  color:'#1FAFA8', marginLeft:'2vw'}} />
+                                  </td>
+                                  <td>
+                                  <ChromeOutlined  
+                                      style={{fontSize:'2vw',  color:'#1FAFA8', marginLeft:'2vw'}} />
+                                  </td>
+                                  <td>
+                                  <CommentOutlined 
+                                      style={{fontSize:'2vw',  color:'#1FAFA8', marginLeft:'2vw'}} />
+                                  </td>
+
+                                </tr>
+                              </table>
+                            </center>
                         </div>
               </div>
             </div>

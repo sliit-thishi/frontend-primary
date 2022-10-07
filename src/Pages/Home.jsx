@@ -3,8 +3,8 @@ import React from 'react';
 import './NavBar.css';
 import './Header.css';
 
-
-import { ContainerOutlined,SearchOutlined } from '@ant-design/icons';
+import logo from '../Resources/sampleLogo.png';
+import { ContainerOutlined,SearchOutlined, BellOutlined , UserOutlined} from '@ant-design/icons';
 import './Home.css';
 import { useState } from 'react';
 
@@ -61,7 +61,9 @@ import Settings from './Settings';
         <div className="nFullContent">
             <div style={{height:'1vw'}}></div>
             <div className="nContent">
-            <div style={{height:'5vw'}}>LOGO</div>
+            <div style={{height:'5vw'}}>
+              <img src={logo} style={{height:'7vw', width:'10vw', marginLeft:'5vw'}}></img>
+            </div>
                 <ul className="nItemList">
                     <li><ContainerOutlined/>Dashboard</li>
                     <li onClick={onclickAssignedEmployees} style={{color:AssignedEmployeeCol}}><ContainerOutlined/>Assigned Employees</li>
@@ -94,7 +96,12 @@ import Settings from './Settings';
                 </table>
              </div>
              <div style={{width:'20%',height:'100%', marginLeft:'80%',position:'absolute', backgroundColor:'#F2F7F6'}}>
-             <h3>bell icon      image</h3>
+             <h3><BellOutlined 
+              style={{fontSize:'2.5vw',  color:'#1FAFA8', marginLeft:'4vw'}} 
+             />     
+             <UserOutlined 
+              style={{fontSize:'2.5vw',  color:'#1FAFA8', marginLeft:'2vw'}} />
+             </h3>
              </div>
         
           </div>
