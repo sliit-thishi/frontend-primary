@@ -22,16 +22,30 @@ import Settings from './Settings';
 
     const onSearch = (value) => console.log(value);
     const [logicMeeting , setLogicMeeting] = useState(false);
+    const [logicAssignedEmployees , setLogicAssignedEmployees] = useState(false);
     const [meetingCol , setMeetingCol] = useState("rgb(3, 122, 122)")
+    const [AssignedEmployeeCol , setAssignedEmployeeCol] = useState("rgb(3, 122, 122)")
 
     function onclickMeeting(){
       if(!logicMeeting){
         setLogicMeeting(true)
-        setMeetingCol("yellow")
+        setMeetingCol("#8498B1")
       }
       else{
         setLogicMeeting(false)
         setMeetingCol("rgb(3, 122, 122)")
+      }
+     
+    }
+
+    function onclickAssignedEmployees(){
+      if(!logicAssignedEmployees){
+        setLogicAssignedEmployees(true)
+        setAssignedEmployeeCol("#8498B1")
+      }
+      else{
+        setLogicAssignedEmployees(false)
+        setAssignedEmployeeCol("rgb(3, 122, 122)")
       }
      
     }
@@ -46,7 +60,7 @@ import Settings from './Settings';
             <div style={{height:'5vw'}}>LOGO</div>
                 <ul className="nItemList">
                     <li><ContainerOutlined/>Dashboard</li>
-                    <li><ContainerOutlined/>Assigned Employees</li>
+                    <li onClick={onclickAssignedEmployees} style={{color:AssignedEmployeeCol}}><ContainerOutlined/>Assigned Employees</li>
                     <li onClick={onclickMeeting} style={{color:meetingCol}}><ContainerOutlined/>Meetings</li>
                     <li><ContainerOutlined/>Reports</li>
                     <li><ContainerOutlined/>Monitor Employees</li>
@@ -78,7 +92,11 @@ import Settings from './Settings';
           {logicMeeting&&<div className='hSubContent'>
               <Meetings/>
           </div>}
-          {/* End of Sub Content - Meetings*/}
+
+          {/* Sub content - Assigned Employees */}
+          {logicAssignedEmployees&&<div className='hSubContent'>
+              <AssignedEmployees/>
+          </div>}
 
 
         </div>
