@@ -5,7 +5,7 @@ import {CameraOutlined} from '@ant-design/icons'
 import './NavBar.css';
 import './Header.css';
 
-import logo from '../Resources/sampleLogo.png';
+import logo from '../Resources/1.png';
 import {ContainerOutlined, SearchOutlined, BellOutlined, UserOutlined} from '@ant-design/icons';
 import './Home.css';
 import {useState} from 'react';
@@ -81,8 +81,8 @@ function Home() {
             <div className="nFullContent">
                 <div style={{height: '1vw'}}></div>
                 <div className="nContent">
-                    <div style={{height: '5vw'}}>
-                        <img src={logo} style={{height: '7vw', width: '10vw', marginLeft: '5vw'}}></img>
+                    <div style={{height: '8vw'}}>
+                        <img src={logo} style={{height: '13vw', width: '17vw'}}></img>
                     </div>
                     <ul className="nItemList">
                         <li><ContainerOutlined/>Dashboard</li>
