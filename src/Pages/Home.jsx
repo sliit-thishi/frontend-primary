@@ -88,15 +88,15 @@ function Home() {
 
     return (
         <div className='hFullScreen' id="domEl" ref={domEl}>
-            <button className="screenshot" onClick={downloadImage}><CameraOutlined
-                style={{fontSize: '20px', color: '#08c'}}/></button>
-            <button className="screenshot1"><ScreenRecording
-                screen={true}
-                audio={false}
-                video={false}
-                downloadRecordingPath="Screen_Recording_Demo"
-                downloadRecordingType="mp4"
-            ></ScreenRecording></button>
+            {/*<button className="screenshot" onClick={downloadImage}><CameraOutlined*/}
+            {/*    style={{fontSize: '20px', color: '#08c'}}/></button>*/}
+            {/*<button className="screenshot1"><ScreenRecording*/}
+            {/*    screen={true}*/}
+            {/*    audio={false}*/}
+            {/*    video={false}*/}
+            {/*    downloadRecordingPath="Screen_Recording_Demo"*/}
+            {/*    downloadRecordingType="mp4"*/}
+            {/*></ScreenRecording></button>*/}
 
 
             {/* Navigation Bar */}

@@ -57,8 +57,6 @@ function MonitorEmployees()
                     </tr>
                 </table>
             </div>
-            {logicRecording &&  <div><ScreenRecording /></div>}
-            {logicScreenshot &&  <div><ScreenRecording/></div>}
         </div>
         </>
     );
