@@ -1,9 +1,18 @@
-import React from "react";
+import React, {useState} from "react";
 import { AudioOutlined,VideoCameraOutlined  } from '@ant-design/icons';
 import './Home.css';
 
 function ScreenRecordingHome()
 {
+    const [logicRespond, setLogicRespond] = useState(false);
+    function onClickSendRequest() {
+        if (!logicRespond) {
+            setLogicRespond(true)
+    
+        } else {
+            setLogicRespond(false)
+        }
+    }
     return(
         <>
         <div>
@@ -22,7 +31,10 @@ function ScreenRecordingHome()
                     <table style={{marginLeft:'auto', marginRight:'auto', marginTop:'2vw'}}>
                         <tr>
                             <td>
-                                <button className="hRecordingBottomBtn">Send Request to Share</button>
+                            {!logicRespond &&   <button className="hRecordingBottomBtn" onClick={onClickSendRequest}>Send Request to Share</button>}
+                            </td>
+                            <td>
+                            {logicRespond &&   <button className="hRecordingBottomBtn" >Respond</button>}
                             </td>
                             <td>
                                 <button className="hRecordingBottomBtn">Record</button>
