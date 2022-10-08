@@ -58,16 +58,7 @@ const ScreenRecording = ({
             }
         };
         return (
-            <div className="hRecordingContent">
-                <div>
-                    <table style={{float:'right'}}>
-                        <tr><td><VideoCameraOutlined  
-                        style={{fontSize:'2.5vw',  color:'#1FAFA8'}} /></td>
-                        <td><AudioOutlined 
-                        style={{fontSize:'2.5vw',  color:'#1FAFA8', marginLeft:'2vw'}} /></td>
-                        </tr>
-                    </table>
-                </div>
+       
             <Row>
                 <Col span="12" style={{ lineHeight: "24px" }}>
                     {status && status !== "stopped" && (
@@ -145,7 +136,7 @@ const ScreenRecording = ({
                     )}
                 </Col>
             </Row>
-            </div>
+        
         );
     };
     return (
