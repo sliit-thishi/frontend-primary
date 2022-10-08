@@ -22,7 +22,7 @@ function App() {
         <Route path='/reports' component={Reports} />
         <Route path='/settings' component={Settings} />
         <Route path='/monitor_employees' component={MonitorEmployees} />
-        <Route path='/screen_recording' component={ScreenRecording} />
+        <Route path='/screen_recording' element={<ScreenRecording/>} />
       </Routes>
     </Router>
   );
