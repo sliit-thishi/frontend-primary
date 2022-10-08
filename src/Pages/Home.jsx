@@ -4,10 +4,10 @@ import {CameraOutlined} from '@ant-design/icons'
 
 import './NavBar.css';
 import './Header.css';
+import './Home.css';
 
 import logo from '../Resources/1.png';
 import {ContainerOutlined, SearchOutlined, BellOutlined, UserOutlined} from '@ant-design/icons';
-import './Home.css';
 import {useState} from 'react';
 
 import Meetings from './Meetings';
@@ -24,15 +24,19 @@ function Home() {
     const onSearch = (value) => console.log(value);
     const [logicMeeting, setLogicMeeting] = useState(false);
     const [logicAssignedEmployees, setLogicAssignedEmployees] = useState(false);
+    const [logicMonitorEmployees, setLogicMonitorEmployees] = useState(false);
+    const [monitorEmployeeCol, setMonitorEmployeeCol] = useState(" #1FAFA8")
     const [meetingCol, setMeetingCol] = useState(" #1FAFA8")
     const [AssignedEmployeeCol, setAssignedEmployeeCol] = useState(" #1FAFA8")
 
     function onclickMeeting() {
         if (!logicMeeting) {
+          setLogicMonitorEmployees(false)
             setLogicAssignedEmployees(false)
             setLogicMeeting(true)
             setMeetingCol("#066B66")
             setAssignedEmployeeCol(" #1FAFA8")
+            setMonitorEmployeeCol(" #1FAFA8")
         } else {
             setLogicMeeting(false)
             setMeetingCol(" ")
@@ -43,14 +47,32 @@ function Home() {
     function onclickAssignedEmployees() {
         if (!logicAssignedEmployees) {
             setLogicAssignedEmployees(true)
+            setLogicMonitorEmployees(false)
+            setLogicMeeting(false)
             setAssignedEmployeeCol("#066B66")
             setMeetingCol("#1FAFA8")
+            setMonitorEmployeeCol("#1FAFA8")
         } else {
             setLogicAssignedEmployees(false)
             setAssignedEmployeeCol("#1FAFA8")
         }
 
     }
+
+    function onclickMonitorEmployees() {
+      if (!logicMonitorEmployees) {
+          setLogicMonitorEmployees(true)
+          setLogicMeeting(false)
+          setLogicAssignedEmployees(false)
+          setMonitorEmployeeCol("#066B66")
+          setMeetingCol("#1FAFA8")
+          setAssignedEmployeeCol("#1FAFA8")
+      } else {
+          setLogicMonitorEmployees(false)
+          setMonitorEmployeeCol("#1FAFA8")
+      }
+
+  }
 
     const domEl = useRef(null);
 
@@ -91,7 +113,7 @@ function Home() {
                         </li>
                         <li onClick={onclickMeeting} style={{color: meetingCol}}><ContainerOutlined/>Meetings</li>
                         <li><ContainerOutlined/>Reports</li>
-                        <li><ContainerOutlined/>Monitor Employees</li>
+                        <li onClick={onclickMonitorEmployees} style={{color: monitorEmployeeCol}}><ContainerOutlined/>Monitor Employees</li>
                         <li><ContainerOutlined/>Settings</li>
                     </ul>
                 </div>
@@ -153,6 +175,10 @@ function Home() {
                     <AssignedEmployees/>
                 </div>}
 
+             {/* Sub content - Monitor Employees */}
+             {logicMonitorEmployees && <div className='hSubContent'>
+                    <MonitorEmployees/>
+                </div>}
 
             </div>
             {/* End of the Content */}
