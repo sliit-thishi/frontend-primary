@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.screenshot{
+  position: absolute;
+  z-index: 100;
+  right: 30px;
+  bottom: 100px;
+}
+
+.screenshot1{
+  position: absolute;
+  z-index: 100;
+  right: 30px;
+  bottom: 30px;
+}
