@@ -9,6 +9,7 @@ import Meetings from './Pages/Meetings';
 import Reports from './Pages/Reports';
 import MonitorEmployees from './Pages/MonitorEmployees';
 import Settings from './Pages/Settings';
+import ScreenRecording from './Pages/ScreenRecording';
   
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path='/reports' component={Reports} />
         <Route path='/settings' component={Settings} />
         <Route path='/monitor_employees' component={MonitorEmployees} />
+        <Route path='/screen_recording' component={ScreenRecording} />
       </Routes>
     </Router>
   );
