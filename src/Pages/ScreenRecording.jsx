@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Row, Col, Button, Badge } from "antd";
 import { useReactMediaRecorder } from "react-media-recorder";
-import { AudioOutlined,VideoCameraOutlined  } from '@ant-design/icons';
 import Text from "antd/lib/typography/Text";
-import './Home.css';
+
 const ScreenRecording = ({
                              screen,
                              audio,

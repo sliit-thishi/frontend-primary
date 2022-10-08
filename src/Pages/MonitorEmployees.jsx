@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import './Home.css';
 
-import ScreenRecording from "./ScreenRecording";
+import ScreenRecordingHome from "./ScreenRecordingHome";
+import Screenshot from "./Screenshot";
 
 function MonitorEmployees()
 {
@@ -43,19 +44,30 @@ function MonitorEmployees()
                 <table>
                     <tr>
                         <td>
-                            <button className="hRecordingBtn"
+                        <button className="hRecordingBtn"
                             onClick={onclickRecording} style={{backgroundColor:logicRecordingClr}}>
                                 Screen Recording
                             </button>
                         </td>
                         <td>
-                            <button className="hRecordingBtn"
+                        <button className="hRecordingBtn"
                             onClick={onclickScreenshot} style={{backgroundColor:logicScreenshotClr}}>
                                 Screenshot
                             </button>
                         </td>
                     </tr>
                 </table>
+            </div>
+            <div>
+            {logicRecording &&   
+            <div>
+                <ScreenRecordingHome/>
+            </div>}
+            {logicScreenshot &&   
+            <div>
+                <Screenshot/>
+            </div>}
+              
             </div>
         </div>
         </>
