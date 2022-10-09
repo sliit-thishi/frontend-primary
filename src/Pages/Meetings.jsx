@@ -1,12 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { AudioOutlined,CommentOutlined, UsergroupAddOutlined,ChromeOutlined, ExpandOutlined ,CalendarOutlined , PlusCircleOutlined, FieldTimeOutlined, VideoCameraOutlined  } from '@ant-design/icons';
 
 import EmployeeCard from './EmployeeCard';
 import './Home.css';
+import workTrackerApi from "../api/workTrackerApi";
+
+
+
 
 function Meetings()
 {
+
+  const [employees , setEmployees] = useState([])
+
+
+  function sheduelMeeting(){
+    const meeting = {org_emp_id:1}
+  
+    workTrackerApi.get("/addMeeting",{
+      meeting:meeting,
+      employees:employees
+    })
+    .then((res) => { 
+        console.log("result - ",res.data)
+        setEmployees(res.data);
+    })
+
+  .catch((err) => { 
+    console.log(err)
+  });
+  }
+
     return(
         <>
         <div>
