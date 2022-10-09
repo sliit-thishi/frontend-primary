@@ -12,13 +12,7 @@ function EmployeeCard()
         })
         .then((res) => { 
             console.log("result - ",res.data)
-            let employeeList = []
-    
-            for(var i=0; i<res.data.length; i++){
-                employeeList= res.data[i]
-                
-            }
-            setEmployees(employeeList);
+            setEmployees(res.data)
         })
   
       .catch((err) => { 
