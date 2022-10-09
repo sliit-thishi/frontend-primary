@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
+import workTrackerApi from "../api/workTrackerApi";
 
 import EmployeeCard from './EmployeeCard';
 import ProjectCard from './ProjectCard';
@@ -9,6 +10,7 @@ function AssignedEmployees()
 {
     const [logicProjectCard , setLogicProjectCard] = useState(false);
     const [logicShowProfile , setLogicShowProfile] = useState(false);
+    const [employees , setEmployees] = useState([]);
 
     function onclickSearch(){
         if(!logicProjectCard){
@@ -22,11 +24,37 @@ function AssignedEmployees()
        
       }
 
+    
+
+    useEffect(()=>{
+        workTrackerApi.get("/getEmployees",{
+
+        })
+        .then((res) => { 
+            console.log("result - ",res.data)
+            let employeeList = []
+    
+            for(var i=0; i<res.data.length; i++){
+                employeeList= res.data[i]
+                
+            }
+            setEmployees(employeeList);
+        })
+  
+      .catch((err) => { 
+        console.log(err)
+      });
+
+      
+          
+        },[])
+
 
     return(
         <>
      <div>
-        <div className='hLeftSubContent'>
+       
+     {employees.map((employeeList)=>( <div className='hLeftSubContent'>
         {!logicShowProfile&& <div className='hSearchContent'>
            <h2 className='hOptionTitle' style={{textAlign:'left', paddingLeft:'2vw'}}>Enter Employee ID</h2>
             <input type='text' style={{
@@ -54,8 +82,8 @@ function AssignedEmployees()
                     <img src={user}
                     style={{height:'6vw', width:'6vw', marginLeft:'2vw'}}/>
                   </td>
-                  <td><h2 className='hOptionTitle' style={{paddingLeft:'2vw'}}>175745-7382-A<br/> <span style={{fontSize:'1vw', fontWeight:'600'}}>Software Engineer</span></h2> </td>
-                  <td><h2 className='hOptionTitle' style={{fontWeight:'450', fontSize:'1.2vw', paddingLeft:'2vw'}}>Employee Name</h2></td>
+                  <td><h2 className='hOptionTitle' style={{paddingLeft:'2vw'}}>{employeeList.EmpNo}<br/> <span style={{fontSize:'1vw', fontWeight:'600'}}>{employeeList.EmpPosition}</span></h2> </td>
+                  <td><h2 className='hOptionTitle' style={{fontWeight:'450', fontSize:'1.2vw', paddingLeft:'2vw'}}>{employeeList.EmpName}</h2></td>
                 </tr>
               </table>
             </div>}
@@ -66,6 +94,7 @@ function AssignedEmployees()
                 <ProjectCard/>
             </div>}
             </div>
+     ))}
 
             <div className='hRightSubContent'>
               <EmployeeCard/>
