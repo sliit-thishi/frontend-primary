@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import {UserOutlined, PhoneOutlined,MessageOutlined} from '@ant-design/icons';
 
 import { AudioOutlined,CommentOutlined, UsergroupAddOutlined,ChromeOutlined, ExpandOutlined ,CalendarOutlined , PlusCircleOutlined, FieldTimeOutlined, VideoCameraOutlined  } from '@ant-design/icons';
-
-import EmployeeCard from './EmployeeCard';
+import { Link } from "react-router-dom";
+import MonitorEmployees from './MonitorEmployees';
 import './Home.css';
 import workTrackerApi from "../api/workTrackerApi";
+import {useNavigate} from 'react-router-dom';
 
 
 
@@ -12,19 +14,47 @@ import workTrackerApi from "../api/workTrackerApi";
 function Meetings()
 {
 
-  const [employees , setEmployees] = useState([])
+  const [employeesAdd , setEmployeesAdd] = useState([])
+  const [employees , setEmployees] = useState([]);
+  const [addEmpLogic , setAddEmpLogic] = useState(false)
+  const [startMeetingLogic , setStartMLogic] = useState(false)
+
+  const navigate = useNavigate();
 
 
-  function sheduelMeeting(){
-    const meeting = {org_emp_id:1}
-  
-    workTrackerApi.get("/addMeeting",{
-      meeting:meeting,
-      employees:employees
+  useEffect(()=>{
+    setStartMLogic(false)
+    workTrackerApi.get("/getEmployees",{
+
     })
     .then((res) => { 
         console.log("result - ",res.data)
-        setEmployees(res.data);
+        setEmployees(res.data)
+    })
+
+  .catch((err) => { 
+    console.log(err)
+  });
+
+  
+      
+    },[])
+
+
+  function scheduelMeeting(){
+    if(!addEmpLogic){
+      alert("add employees first")
+      return
+    }
+    const meeting = {org_emp_id:1}
+  
+    workTrackerApi.post("/addMeeting",{
+      meeting:meeting,
+      employees:employeesAdd
+    })
+    .then((res) => { 
+        console.log("result - ",res.data)
+        alert(res.data)
     })
 
   .catch((err) => { 
@@ -32,16 +62,42 @@ function Meetings()
   });
   }
 
+  function startMeeting(){
+    workTrackerApi.put("/startMeeting/"+1,{
+
+    })
+    .then((res) => { 
+        console.log("result - ",res.data)
+        alert(res.data)
+        if(res.data=="started"){
+          
+          setStartMLogic(true)
+        }
+    })
+
+  .catch((err) => { 
+    console.log(err)
+  });
+  }
+
+function addEmpMeeting(id){
+  employeesAdd.push(id)
+  alert("added " + id)
+  alert(employeesAdd)
+  setAddEmpLogic(true)
+}
+
     return(
         <>
         <div>
+        {!startMeetingLogic?   <div>
         <div className='hLeftSubContent'>
               <div className='hMeetingOptions'>
                   <div className='hOptions'>
                     <table>
                       <tr>
                         <td>
-                          <div className='hOptionCard'>
+                          <div className='hOptionCard' onClick={startMeeting}>
                           <VideoCameraOutlined  
                                   style={{fontSize:'4vw',  color:'#1FAFA8', margin:'1vw 0vw 0vw 8vw'}} />
                             <h2 className='hOptionTitle'>Start Meeting</h2>
@@ -57,7 +113,7 @@ function Meetings()
                       </tr>
                       <tr>
                         <td>
-                          <div className='hOptionCard'>
+                          <div className='hOptionCard' onClick={scheduelMeeting}>
                           <CalendarOutlined  
                                   style={{fontSize:'4vw',  color:'#1FAFA8', margin:'1vw 0vw 0vw 8vw'}} />
                             <h2 className='hOptionTitle'>Scheduled Meetings</h2>
@@ -111,9 +167,59 @@ function Meetings()
             </div>
 
             <div className='hRightSubContent'>
-              <EmployeeCard/>
-            </div>
+            {employees.map((employeeList)=>(
+        <div
+        style={{
+            height:'6vw',
+            width:'24vw',
+            borderRadius:'10px',
+            backgroundColor:'#F4F9F8',
+            margin: '1vw 0vw 0vw 1vw',
+            boxShadow: '0.1vw 0.1vw #B5D3CE',
+            cursor: 'pointer'
+        }}
+        >
+            <table>
+                <tr>
+                    <td>
+                    <UserOutlined 
+                        style={{fontSize:'2vw',  color:'#1FAFA8', marginLeft:'1vw'}} />
+                    </td>
+                    <td>
+                        <h3 style={{fontSize:'1.2vw', color:'#066B66', fontWeight:'600'}}>{employeeList.empName} <br/><span style={{fontSize:'0.9vw', color:'#066B66', fontWeight:'550'}}>{employeeList.empPosition} </span></h3>
+                      
+                    </td>
+                    <td>
+                        <div>
+                            <button style={{height:'2vw', width:'8vw', borderRadius:'1vw', fontSize:'0.8vw', color:'#066B66', marginLeft:'2.4vw'}} onClick={e=>addEmpMeeting(employeeList.empId)}>Add to Meeting</button>
+                        </div>
+                        <table>
+                            <tr>
+                                <td>
+                                <PhoneOutlined 
+                                style={{height:'1.5vw', width:'3vw', borderRadius:'0.5vw', fontSize:'1vw', color:'white', backgroundColor:'#066B66', paddingTop:'0.5vw', marginLeft:'2.7vw'}}/>
+                                </td>
+                                <td>
+                                <MessageOutlined 
+                                 style={{height:'1.5vw', width:'3vw', borderRadius:'0.5vw', fontSize:'1vw', color:'white', backgroundColor:'#066B66', paddingTop:'0.5vw', marginLeft:'0.4vw'}}/>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
         </div>
+        ))}
+            </div>
+        </div>:<div>
+          <MonitorEmployees/>
+        </div>
+       
+        
+}
+
+</div>
         </>
     );
 }
