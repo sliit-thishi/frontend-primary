@@ -1,10 +1,37 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {UserOutlined, PhoneOutlined,MessageOutlined} from '@ant-design/icons';
+import workTrackerApi from "../api/workTrackerApi";
 
 function EmployeeCard()
 {
+    const [employees , setEmployees] = useState([]);
+
+    useEffect(()=>{
+        workTrackerApi.get("/getEmployees",{
+
+        })
+        .then((res) => { 
+            console.log("result - ",res.data)
+            let employeeList = []
+    
+            for(var i=0; i<res.data.length; i++){
+                employeeList= res.data[i]
+                
+            }
+            setEmployees(employeeList);
+        })
+  
+      .catch((err) => { 
+        console.log(err)
+      });
+
+      
+          
+        },[])
+
     return(
         <>
+        {employees.map((employeeList)=>(
         <div
         style={{
             height:'6vw',
@@ -23,7 +50,7 @@ function EmployeeCard()
                         style={{fontSize:'2vw',  color:'#1FAFA8', marginLeft:'1vw'}} />
                     </td>
                     <td>
-                        <h3 style={{fontSize:'1.2vw', color:'#066B66', fontWeight:'600'}}>Employee Name <br/><span style={{fontSize:'0.9vw', color:'#066B66', fontWeight:'550'}}>Software Engineer</span></h3>
+                        <h3 style={{fontSize:'1.2vw', color:'#066B66', fontWeight:'600'}}>{employeeList.empName} <br/><span style={{fontSize:'0.9vw', color:'#066B66', fontWeight:'550'}}>{employeeList.empPosition} </span></h3>
                       
                     </td>
                     <td>
@@ -47,6 +74,7 @@ function EmployeeCard()
             </table>
 
         </div>
+        ))}
         </>
     );
 }
