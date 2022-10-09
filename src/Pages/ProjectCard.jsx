@@ -1,11 +1,41 @@
-import React from "react";
+import React, {useState,useEffect} from "react";
 import './Home.css';
+
+
+
+
 
 function ProjectCard()
 {
+
+    const [projects , setProjects] = useState([]);
+
+    useEffect(()=>{
+        workTrackerApi.get("/getProjects",{
+
+        })
+        .then((res) => { 
+            console.log("result - ",res.data)
+            let projectList = []
+    
+            for(var i=0; i<res.data.length; i++){
+                projectList= res.data[i]
+                
+            }
+            setProjects(projectList);
+        })
+  
+      .catch((err) => { 
+        console.log(err)
+      });
+
+      
+          
+        },[])
     return(
         <>
-        <div
+         {projects.map((projectList)=>(
+         <div
         style={{
             height:'4.5vw',
             width:'38vw',
@@ -18,7 +48,7 @@ function ProjectCard()
                 <tr>
                     <td >
                       <div style={{width:'15vw'}}> <h2 className='hOptionTitle'
-                       style={{fontWeight:'500', fontSize:'1.2vw'}}> Project Name </h2></div>
+                       style={{fontWeight:'500', fontSize:'1.2vw'}}> {projectList.prName} </h2></div>
                     </td>
                     <td style={{paddingLeft:'16vw'}}>
                         <button type="primary"
@@ -35,6 +65,7 @@ function ProjectCard()
             </table>
 
         </div>
+         ))}
         </>
     );
 }
