@@ -7,6 +7,7 @@ import MonitorEmployees from './MonitorEmployees';
 import './Home.css';
 import workTrackerApi from "../api/workTrackerApi";
 import {useNavigate} from 'react-router-dom';
+import workTrackerApiCopy from "../api/workTrackerApiCopy";
 
 
 
@@ -39,6 +40,19 @@ function Meetings()
   
       
     },[])
+
+    function testMl(){
+      workTrackerApiCopy.get("/model?id=5",{
+        })
+        .then((res) => { 
+            console.log("result - ",res.data)
+            alert(res.data)
+        })
+  
+      .catch((err) => { 
+        console.log(err)
+      });
+  }
 
 
   function scheduelMeeting(){

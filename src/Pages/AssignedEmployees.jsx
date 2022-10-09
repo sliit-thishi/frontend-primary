@@ -25,19 +25,30 @@ function AssignedEmployees()
           console.log("result - ",res.data)
           alert(res.data)
           //get ml data by front after that
-          workTrackerApi.post("/getProjectsEmp",{
-            codes:codes
+          workTrackerApiCopy.get("/model?id="+res.data,{
           })
           .then((res) => { 
               console.log("result - ",res.data)
               alert(res.data)
-              setProjects(res.data)
-              setLogicProjectCard(true)
+              workTrackerApi.post("/getProjectsEmp",{
+                codes:res.data
+              })
+              .then((res) => { 
+                  console.log("result - ",res.data)
+                  alert(res.data)
+                  setProjects(res.data)
+                  setLogicProjectCard(true)
+              })
+        
+            .catch((err) => { 
+              console.log(err)
+            });
           })
     
         .catch((err) => { 
           console.log(err)
         });
+          
   
   
       })
