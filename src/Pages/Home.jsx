@@ -28,6 +28,7 @@ function Home() {
     const [monitorEmployeeCol, setMonitorEmployeeCol] = useState(" #1FAFA8")
     const [meetingCol, setMeetingCol] = useState(" #1FAFA8")
     const [AssignedEmployeeCol, setAssignedEmployeeCol] = useState(" #1FAFA8")
+    const [logicTitle, setLogicTitle] = useState("");
 
     function onclickMeeting() {
         if (!logicMeeting) {
@@ -37,9 +38,11 @@ function Home() {
             setMeetingCol("#066B66")
             setAssignedEmployeeCol(" #1FAFA8")
             setMonitorEmployeeCol(" #1FAFA8")
+            setLogicTitle("Meeting")
         } else {
             setLogicMeeting(false)
             setMeetingCol(" ")
+            setLogicTitle("")
         }
 
     }
@@ -52,9 +55,11 @@ function Home() {
             setAssignedEmployeeCol("#066B66")
             setMeetingCol("#1FAFA8")
             setMonitorEmployeeCol("#1FAFA8")
+            setLogicTitle("Assigned_Employees")
         } else {
             setLogicAssignedEmployees(false)
             setAssignedEmployeeCol("#1FAFA8")
+            setLogicTitle("")
         }
 
     }
@@ -67,9 +72,11 @@ function Home() {
           setMonitorEmployeeCol("#066B66")
           setMeetingCol("#1FAFA8")
           setAssignedEmployeeCol("#1FAFA8")
+          setLogicTitle("Monitor_Employees")
       } else {
           setLogicMonitorEmployees(false)
           setMonitorEmployeeCol("#1FAFA8")
+          setLogicTitle("")
       }
 
   }
@@ -126,7 +133,9 @@ function Home() {
                 {/* Header Part */}
                 <div className="heContent">
                     <div style={{width: '40%', height: '100%', position: 'absolute', backgroundColor: '#F2F7F6'}}>
-                        <h1 className='hOptionTitle' style={{float: 'left', paddingLeft: '2vw'}}>Meetings</h1>
+                    {logicTitle == "Meeting" && <h1 className='hOptionTitle' style={{float: 'left', paddingLeft: '2vw'}}>Meetings</h1>}
+                    {logicTitle == "Assigned_Employees" && <h1 className='hOptionTitle' style={{float: 'left', paddingLeft: '2vw'}}>Assigned Employees</h1>}
+                    {logicTitle == "Monitor_Employees" && <h1 className='hOptionTitle' style={{float: 'left', paddingLeft: '2vw'}}>Monitor Employees</h1>}
                     </div>
                     <div style={{width: '40%', height: '100%', marginLeft: '40%', position: 'absolute'}}>
                         <table>
