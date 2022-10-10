@@ -22,7 +22,7 @@ function App() {
         <Route path='/meetings' component={Meetings} />
         <Route path='/reports' component={Reports} />
         <Route path='/settings' component={Settings} />
-        <Route path='/test' component={Test} />
+        <Route path='/test' component={<Test/>} />
         <Route path='/monitor_employees' component={MonitorEmployees} />
       </Routes>
     </Router>

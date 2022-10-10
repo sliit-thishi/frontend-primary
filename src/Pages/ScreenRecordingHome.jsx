@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import { AudioOutlined,VideoCameraOutlined  } from '@ant-design/icons';
 import './Home.css';
 import workTrackerApi from "../api/workTrackerApi";
+import html2canvas from "html2canvas";
 
 function ScreenRecordingHome()
 {
@@ -9,6 +10,25 @@ function ScreenRecordingHome()
     const [sendEmpId , setSendEmpId] = useState(1)
     const [recievEmpId , setRecievEmpId] = useState(3)
     const [reqId , setReqId] = useState(0)
+    const [screenshotLogic , setScreenshotLogic] = useState(false)
+
+    const captureImage = () =>{
+        html2canvas(document.body).then(function(canvas){
+          var a = document.createElement('a')
+          a.href = canvas.toDataURL("..assets/image/jpeg").replace("image/jpeg","image/octat-stream");
+          a.download = 'screenshot.jpg';
+          a.click();
+        })
+      }
+
+      function getScreenshot(){
+        if(!screenshotLogic){
+            alert("You cant get screenshot request has not accepted")
+        }
+        else{
+            captureImage()
+        }
+      }
 
     function onClickSendRequest() {
         if (!logicRespond) {
@@ -32,6 +52,8 @@ function ScreenRecordingHome()
         }
     }
 
+
+
     function onclickShowResponse(){
         if (logicRespond) {
             
@@ -42,8 +64,12 @@ function ScreenRecordingHome()
                 console.log("result - ",res.data)
                 alert(res.data)
                 if(res.data!="pending"){
+                    if(res.data=="accept"){
+                        setScreenshotLogic(true)
+                    }
                     setLogicRespond(false)
                 }
+                
                 
             })
       
