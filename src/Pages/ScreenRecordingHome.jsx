@@ -3,6 +3,7 @@ import { AudioOutlined,VideoCameraOutlined  } from '@ant-design/icons';
 import './Home.css';
 import workTrackerApi from "../api/workTrackerApi";
 import html2canvas from "html2canvas";
+import ScreenRecording from "./ScreenRecording";
 
 function ScreenRecordingHome()
 {
@@ -72,12 +73,9 @@ function ScreenRecordingHome()
                 
                 
             })
-      
           .catch((err) => { 
             console.log(err)
           });
-    
-    
         } else {
             setLogicRespond(true)
         }

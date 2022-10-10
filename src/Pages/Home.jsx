@@ -17,6 +17,7 @@ import MonitorEmployees from './MonitorEmployees';
 import Reports from './Reports';
 import Settings from './Settings';
 import ScreenRecordingHome from "./ScreenRecordingHome";
+import ScreenRecording from "./ScreenRecording";
 
 
 function Home() {

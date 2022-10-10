@@ -23,7 +23,11 @@ function App() {
         <Route path='/reports' component={Reports} />
         <Route path='/settings' component={Settings} />
         <Route path='/test' component={<Test/>} />
-        <Route path='/monitor_employees' component={MonitorEmployees} />
+        <Route path='/monitor_employees' component={<MonitorEmployees screen={true}
+                                                                      audio={false}
+                                                                      video={false}
+                                                                      downloadRecordingPath="Screen_Recording_Demo"
+                                                                      downloadRecordingType="mp4"/>} />
       </Routes>
     </Router>
   );

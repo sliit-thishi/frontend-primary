@@ -5,8 +5,17 @@ import ScreenRecordingHome from "./ScreenRecordingHome";
 import user from '../Resources/user.png';
 import html2canvas from "html2canvas";
 import workTrackerApi from "../api/workTrackerApi";
+import ScreenRecording from "./ScreenRecording";
+import {useReactMediaRecorder} from "react-media-recorder";
+import {Button} from "antd";
 
-function MonitorEmployees()
+
+const MonitorEmployees = ({ screen=true,
+                              audio=false,
+                              video=false,
+                              downloadRecordingPath,
+                              downloadRecordingType,
+                              emailToSupport}) =>
 {
     const [logicRecording, setLogicRecording] = useState(true);
     const [logicScreenshot, setLogicScreenshot] = useState(false);
@@ -18,6 +27,53 @@ function MonitorEmployees()
     const [reqId , setReqId] = useState(0)
     const [screenshotLogic , setScreenshotLogic] = useState(false)
 
+    const [recordingNumber, setRecordingNumber] = useState(0);
+
+    const {
+        status,
+        startRecording: startRecord,
+        stopRecording: stopRecord,
+        mediaBlobUrl
+    } = useReactMediaRecorder({ screen, audio, video });
+
+    const startRecording = () => {
+        return startRecord();
+    };
+
+    const stopRecording = () => {
+        const currentTimeSatmp = new Date().getTime();
+        setRecordingNumber(currentTimeSatmp);
+        return stopRecord();
+    };
+    const viewRecording = () => {
+        window.open(mediaBlobUrl, "_blank").focus();
+    };
+    const downloadRecording = () => {
+        const pathName = `${downloadRecordingPath}_${recordingNumber}.${downloadRecordingType}`;
+        try {
+            if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+                // for IE
+                window.navigator.msSaveOrOpenBlob(mediaBlobUrl, pathName);
+            } else {
+                // for Chrome
+                const link = document.createElement("a");
+                link.href = mediaBlobUrl;
+                link.download = pathName;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    const mailRecording = () => {
+        try {
+            window.location.href = `mailTo:${emailToSupport}?subject=Screen recording for an Issue number ${recordingNumber}&body=Hello%20Team,%0D%0A%0D%0A${mediaBlobUrl}`;
+        } catch (err) {
+            console.error(err);
+        }
+    };
 
     function onclickRecording() {
         if (!logicRecording) {
@@ -90,7 +146,6 @@ function MonitorEmployees()
 
     function onclickShowResponse(){
         if (logicRespond) {
-            
             workTrackerApi.get("/getResponse/"+reqId,{
 
             })
@@ -103,15 +158,10 @@ function MonitorEmployees()
                     }
                     setLogicRespond(false)
                 }
-                
-                
             })
-      
           .catch((err) => { 
             console.log(err)
           });
-    
-    
         } else {
             setLogicRespond(true)
         }
@@ -161,19 +211,44 @@ function MonitorEmployees()
                             <td>
                             {logicRespond &&   <button className="hRecordingBottomBtn" onClick={onclickShowResponse}>Respond</button>}
                             </td>
+
                             <td>
-                                <button className="hRecordingBottomBtn">Record</button>
+                                {status && status !== "recording" && (
+                                    <button
+                                        onClick={startRecording}
+                                        className="hRecordingBottomBtn"
+                                    >
+                                        {mediaBlobUrl ? "Record again" : "Start Recording"}
+                                    </button>
+                                )}
+
                             </td>
                             <td>
-                                <button className="hRecordingBottomBtn">Stop Preview</button>
+                                {status && status === "recording" && (
+                                    <button
+                                        onClick={stopRecording}
+                                        className="hRecordingBottomBtn"
+                                    >
+                                        Stop Preview
+                                    </button>
+                                )}
+                            </td>
+                            <td>
+                                {status && status !== "idle" && (
+                                    <button
+                                        onClick={viewRecording}
+                                        className="hRecordingBottomBtn"
+                                    >
+                                        View
+                                    </button>
+                                )}
+
                             </td>
                         </tr>
                     </table>
                 </div>
             </div>
             </div>}
-           
-              
             </div>
         </div>
         </>
