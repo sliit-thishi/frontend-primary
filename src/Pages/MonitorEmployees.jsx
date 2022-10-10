@@ -117,6 +117,7 @@ const MonitorEmployees = ({ screen=true,
         }
         else{
             captureImage()
+            setScreenshotLogic(false)
         }
       }
 
