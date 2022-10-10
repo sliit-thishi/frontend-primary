@@ -124,6 +124,7 @@ function AssignedEmployees()
               width:'7vw',
               color:'white',
               borderRadius:'7px',
+              fontSize:'0.9vw',
               backgroundColor:'#066B66',
               border:'none'
             }}>Search</button>

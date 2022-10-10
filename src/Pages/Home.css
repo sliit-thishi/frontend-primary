@@ -106,6 +106,7 @@
     background-color:#1FAFA8;
     color: white;
     margin-left: 2.5vw;
+    font-size: 1vw;
     border:none;
     border-radius: 8px;
     cursor: pointer;
@@ -115,6 +116,7 @@
     height: 28vw;
     width: 96%;
     border-radius: 5px;
+
     margin:1vw 0vw 0vw 2vw;
     box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #d5dddd;
     background-color: #e9f3f1;
@@ -123,6 +125,7 @@
 .hRecordingBottomBtn{
     height: 4vw;
     width: 16vw;
+    font-size: 1vw;
     margin-left: 0.5vw;
     background-color: #066B66;
     color: white;
