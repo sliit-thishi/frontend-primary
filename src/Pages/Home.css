@@ -6,7 +6,7 @@
 .hSubContent{
     height: 85%;
     width: 77%;
-    top:15%;
+    top:8vw;
     left: 23%;
     position: absolute;
     background-color: #F2F7F6;
@@ -21,7 +21,7 @@
 
 .hRightSubContent{
     position: absolute;
-    height: 98%;
+    height: 40vw;
     width: 34%;
     left: 65%;
     margin-right: 2vw;
@@ -32,16 +32,16 @@
 
 .hMeetingOptions{
     position: absolute;
-    height: 60%;
+    height: 24vw;
     width: 100%;
     background-color: #F2F7F6;
 }
 
 .hMeetingProgress{
     position: absolute;
-    height: 36%;
+    height: 14vw;
     width: 96%;
-    top:61%;
+    top:26vw;
     border-radius: 12px;
     margin-left: 1vw;
     box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw #d5dddd;
@@ -85,6 +85,7 @@
     float: right;
     margin-right: 1vw;
     cursor: pointer;
+    font-size: 0.9vw;
 }
 
 .hSearchContent{

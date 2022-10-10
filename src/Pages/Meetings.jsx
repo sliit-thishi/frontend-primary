@@ -193,7 +193,8 @@ function addEmpMeeting(id){
             cursor: 'pointer'
         }}
         >
-            <table>
+          <div style={{height:'5.5vw'}}>
+            <table >
                 <tr>
                     <td>
                     <UserOutlined 
@@ -205,23 +206,21 @@ function addEmpMeeting(id){
                     </td>
                     <td>
                         <div>
-                            <button style={{height:'2vw', width:'8vw', borderRadius:'1vw', fontSize:'0.8vw', color:'#066B66', marginLeft:'2.4vw'}} onClick={e=>addEmpMeeting(employeeList.empId)}>Add to Meeting</button>
+                            <button style={{height:'2vw', width:'8vw', borderRadius:'1vw', fontSize:'0.8vw',top:'0', color:'#066B66', marginLeft:'2.4vw', border:'none', boxShadow:'0.1vw 0.21vw  #d5dddd'}} onClick={e=>addEmpMeeting(employeeList.empId)}>Add to Meeting</button>
                         </div>
-                        <table>
-                            <tr>
-                                <td>
-                                <PhoneOutlined 
-                                style={{height:'1.5vw', width:'3vw', borderRadius:'0.5vw', fontSize:'1vw', color:'white', backgroundColor:'#066B66', paddingTop:'0.5vw', marginLeft:'2.7vw'}}/>
-                                </td>
-                                <td>
+                      
+                    </td>
+                    <td>
+
+                    <PhoneOutlined 
+                                style={{height:'1.5vw', width:'3vw', borderRadius:'0.5vw', fontSize:'1vw', color:'white', backgroundColor:'#066B66', paddingTop:'0.5vw'}}/>
+                                
                                 <MessageOutlined 
                                  style={{height:'1.5vw', width:'3vw', borderRadius:'0.5vw', fontSize:'1vw', color:'white', backgroundColor:'#066B66', paddingTop:'0.5vw', marginLeft:'0.4vw'}}/>
-                                </td>
-                            </tr>
-                        </table>
                     </td>
                 </tr>
             </table>
+            </div>
 
         </div>
         ))}
