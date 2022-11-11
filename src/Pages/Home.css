@@ -137,3 +137,18 @@
 .hRecordingBottomBtn:hover{
     opacity: 0.7;
 }
+
+.chatBox{
+    height:auto;
+    width: 35vw;
+    background-color: #066B66;
+    border-radius: 1vw;
+    opacity: 0.7;
+    margin-left: 1.5vw;
+}
+
+.chatContent{
+    color: white;
+    font-size: 1vw;
+    padding: 1vw;
+}

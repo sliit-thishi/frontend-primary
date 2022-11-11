@@ -1,8 +1,7 @@
 import React, {useState,useEffect} from "react";
 import workTrackerApi from "../api/workTrackerApi";
 
-import EmployeeCard from './EmployeeCard';
-import ProjectCard from './ProjectCard';
+import {UserOutlined, PhoneOutlined,MessageOutlined, PaperClipOutlined, FileImageOutlined } from '@ant-design/icons';
 import './Home.css';
 import user from '../Resources/user.png';
 import workTrackerApiCopy from "../api/workTrackerApiCopy";
@@ -11,10 +10,39 @@ function AssignedEmployees()
 {
     const [logicProjectCard , setLogicProjectCard] = useState(false);
     const [logicShowProfile , setLogicShowProfile] = useState(false);
-    const [employees , setEmployees] = useState([]);
+    const [logicChat , setLogicChat] = useState(false);
+    const [emp , setEmp] = useState([]);
     const [codes , setCodes] = useState(["1304351475","1304482685"])
     const [empId , setEmpId] = useState(0)
     const [projects , setProjects] = useState([]);
+    const [employees , setEmployees] = useState([]);
+
+    useEffect(()=>{
+        workTrackerApi.get("/getEmployees",{
+
+        })
+        .then((res) => { 
+            console.log("result - ",res.data)
+            setEmployees(res.data)
+        })
+  
+      .catch((err) => { 
+        console.log(err)
+      });
+
+      
+          
+        },[])
+
+    
+    function onclickChat() {
+      if (!logicChat) {
+          setLogicChat(true)
+      } else {
+          setLogicChat(false)
+      }
+
+  }
 
     function onclickSearch(){
       alert(empId)
@@ -89,7 +117,7 @@ function AssignedEmployees()
         })
         .then((res) => { 
             console.log("result - ",res.data)
-            setEmployees(res.data);
+            setEmp(res.data);
         })
   
       .catch((err) => { 
@@ -104,7 +132,7 @@ function AssignedEmployees()
     return(
         <>
      <div>
-       
+     {!logicChat&& 
       <div className='hLeftSubContent'>
         {!logicShowProfile&& <div className='hSearchContent'>
            <h2 className='hOptionTitle' style={{textAlign:'left', paddingLeft:'2vw'}}>Enter Employee ID</h2>
@@ -130,7 +158,7 @@ function AssignedEmployees()
             }}>Search</button>
             </div>}
             {logicShowProfile&&  <div>
-              {employees.map((employeeList)=>(<div><table>
+              {emp.map((employeeList)=>(<div><table>
                 <tr>
                   <td>
                     <img src={user}
@@ -180,10 +208,97 @@ function AssignedEmployees()
          ))}
             </div>}
             </div>
+}
+
+{logicChat&& 
+      <div className='hLeftSubContent'>
+        <h1 className='hOptionTitle' style={{float: 'left', paddingLeft: '2vw'}}>Chat</h1>
+
+        <div style={{height:'6.5vw', marginTop:'3vw'}}>
+            <table >
+                <tr>
+                    <td>
+                    <UserOutlined 
+                        style={{fontSize:'2.2vw',  color:'#1FAFA8'}} />
+                    </td>
+                    <td>
+                        <h3 style={{fontSize:'1.4vw', color:'#066B66', fontWeight:'600'}}>Employee Name <br/><span style={{fontSize:'0.9vw', color:'#066B66', fontWeight:'550'}}>Employee Position</span></h3>
+                      
+                    </td>
+                   
+                   
+                </tr>
+            </table>
+            </div>
+
+            <div className="chatBox">
+                <p className="chatContent">bafdbaqufdeq chehqwigfidqey cd euqwigrfqeiu. deweqgfhjgea. jwqgergekurh dkdwhgehr hfdwgehd.</p>
+            </div>
+
+            <div style={{marginLeft:'7vw', marginTop:'18vw', position:'fixed'}}>
+              <table>
+                <tr>
+                  <td>
+                    <input type="text" style={{height:'4vw', width:'30vw', borderRadius:'0.8vw', borderColor:'#066B66', borderWidth:'0.1vw'}}/>
+                  </td>
+                  <td><PaperClipOutlined
+                                 style={{fontSize:'2vw', color:'#066B66', paddingTop:'0.5vw', marginLeft:'0.4vw'}}/></td>
+                  <td><FileImageOutlined 
+                                 style={{fontSize:'2vw', color:'#066B66', paddingTop:'0.5vw', marginLeft:'0.4vw'}}/></td>
+                </tr>
+                </table>
+            </div>
+
+        </div>
+}
+
 
 
             <div className='hRightSubContent'>
-              <EmployeeCard/>
+            {employees.map((employeeList)=>(
+        <div
+        style={{
+            height:'6vw',
+            width:'24vw',
+            borderRadius:'10px',
+            backgroundColor:'#F4F9F8',
+            margin: '1vw 0vw 0vw 1vw',
+            boxShadow: '0.1vw 0.1vw #B5D3CE',
+            cursor: 'pointer'
+        }}
+        >
+         <div style={{height:'5.5vw'}}>
+            <table >
+                <tr>
+                    <td>
+                    <UserOutlined 
+                        style={{fontSize:'2vw',  color:'#1FAFA8', marginLeft:'1vw'}} />
+                    </td>
+                    <td>
+                        <h3 style={{fontSize:'1.2vw', color:'#066B66', fontWeight:'600'}}>{employeeList.empName} <br/><span style={{fontSize:'0.9vw', color:'#066B66', fontWeight:'550'}}>{employeeList.empPosition} </span></h3>
+                      
+                    </td>
+                    <td>
+                        <div>
+                            <button style={{height:'2vw', width:'8vw', borderRadius:'1vw', fontSize:'0.8vw',top:'0', color:'#066B66', marginLeft:'2.4vw', border:'none', boxShadow:'0.1vw 0.21vw  #d5dddd'}} >Add to Meeting</button>
+                        </div>
+                      
+                    </td>
+                    <td>
+
+                    <PhoneOutlined 
+                                style={{height:'1.5vw', width:'3vw', borderRadius:'0.5vw', fontSize:'1vw', color:'white', backgroundColor:'#066B66', paddingTop:'0.5vw'}}/>
+                                
+                                <MessageOutlined onClick={onclickChat}
+                                 style={{height:'1.5vw', width:'3vw', borderRadius:'0.5vw', fontSize:'1vw', color:'white', backgroundColor:'#066B66', paddingTop:'0.5vw', marginLeft:'0.4vw'}}/>
+                    </td>
+                </tr>
+            </table>
+            </div>
+
+
+        </div>
+        ))}
             </div>
         </div>
         
