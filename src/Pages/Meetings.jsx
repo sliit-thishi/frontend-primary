@@ -8,6 +8,7 @@ import './Home.css';
 import workTrackerApi from "../api/workTrackerApi";
 import {useNavigate} from 'react-router-dom';
 import workTrackerApiCopy from "../api/workTrackerApiCopy";
+import ScheduleMeeting from "./ScheduleMeeting";
 
 
 
@@ -19,6 +20,7 @@ function Meetings()
   const [employees , setEmployees] = useState([]);
   const [addEmpLogic , setAddEmpLogic] = useState(false)
   const [startMeetingLogic , setStartMLogic] = useState(false)
+  const [scheduleMeetingLogic , setScheduleMeetingLogic] = useState(false)
 
   const navigate = useNavigate();
 
@@ -56,6 +58,7 @@ function Meetings()
 
 
   function scheduelMeeting(){
+    setScheduleMeetingLogic(true);
     if(!addEmpLogic){
       alert("add employees first")
       return
@@ -104,7 +107,7 @@ function addEmpMeeting(id){
     return(
         <>
         <div>
-        {!startMeetingLogic?   <div>
+        {!startMeetingLogic && !scheduleMeetingLogic && <div>
         <div className='hLeftSubContent'>
               <div className='hMeetingOptions'>
                   <div className='hOptions'>
@@ -225,12 +228,21 @@ function addEmpMeeting(id){
         </div>
         ))}
             </div>
-        </div>:<div>
-          <MonitorEmployees/>
         </div>
+        }
+         {startMeetingLogic && 
+            <div>
+              <MonitorEmployees/>
+            </div>
+         }
+          {scheduleMeetingLogic && 
+            <div>
+              <ScheduleMeeting/>
+            </div>
+         }
        
         
-}
+
 
 </div>
         </>

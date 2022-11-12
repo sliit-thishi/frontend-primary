@@ -11,6 +11,7 @@ import MonitorEmployees from './Pages/MonitorEmployees';
 import Test from './Pages/Test';
 import Settings from './Pages/Settings';
 import ScreenRecording from './Pages/ScreenRecording';
+import ScheduleMeeting from './Pages/ScheduleMeeting';
   
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path='/meetings' component={Meetings} />
         <Route path='/reports' component={Reports} />
         <Route path='/settings' component={Settings} />
+        <Route path='/schedule_meeting' component={ScheduleMeeting} />
         <Route path='/test' component={<Test/>} />
         <Route path='/monitor_employees' component={<MonitorEmployees screen={true}
                                                                       audio={false}
