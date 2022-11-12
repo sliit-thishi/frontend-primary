@@ -231,11 +231,12 @@ function AssignedEmployees()
             </table>
             </div>
 
-            <div className="chatBox">
-                <p className="chatContent">bafdbaqufdeq chehqwigfidqey cd euqwigrfqeiu. deweqgfhjgea. jwqgergekurh dkdwhgehr hfdwgehd.</p>
-            </div>
+          <div>
+          <button className="scheduleBtn" style={{width:'8vw', height:'2.2vw', marginLeft:'20vw'}}>Received</button>
+          <button className="scheduleBtn" style={{width:'8vw', height:'2.2vw', marginLeft:'2vw'}}>Sent</button>
+          </div>            
 
-            <div style={{marginLeft:'7vw', marginTop:'18vw', position:'fixed'}}>
+            <div style={{marginLeft:'3vw', marginTop:'18vw', position:'fixed'}}>
               <table>
                 <tr>
                   <td>
@@ -245,6 +246,7 @@ function AssignedEmployees()
                                  style={{fontSize:'2vw', color:'#066B66', paddingTop:'0.5vw', marginLeft:'0.4vw'}}/></td>
                   <td><FileImageOutlined 
                                  style={{fontSize:'2vw', color:'#066B66', paddingTop:'0.5vw', marginLeft:'0.4vw'}}/></td>
+                                 <td><button className="scheduleBtn" style={{width:'8vw', height:'2.2vw', marginLeft:'2vw', backgroundColor:'transparent', color:'black'}}>Send </button></td>
                 </tr>
                 </table>
             </div>
