@@ -297,15 +297,16 @@ const MonitorEmployees = ({ screen=true,
                 <div>
                     <table style={{float:'right'}}>
                         <tr><td><VideoCameraOutlined  
-                        style={{fontSize:'2.5vw',  color:'#1FAFA8'}} /></td>
+                        style={{fontSize:'2.5vw',  color:'#1FAFA8', float:'right'}} /></td>
                         <td><AudioOutlined 
                         style={{fontSize:'2.5vw',  color:'#1FAFA8', marginLeft:'2vw'}} /></td>
                         </tr>
-                        <button style={{ marginBottom: '10px' }} onClick={changeImage}>
+                       
+        <div >
+        <button style={{ float:'right', marginTop:'2vw',  height:'2vw', width:'7vw', backgroundColor:'transparent', color:'#066B66', fontSize:'1.2vw', borderWidth:'0.3vw', borderColor:'#066B66'}} onClick={changeImage}>
           Move
         </button>
-        <div >
-        <img src={images[imgIndex]} alt="Still No" style={{width:"20vw" , height:"20vw" , top:"0" , left:"0"}}></img>
+        <img src={images[imgIndex]} alt="Still No" style={{width:"20vw" , height:"20vw" ,  marginRight:'19vw'}}></img>
         </div>
                     </table>
                 </div>
