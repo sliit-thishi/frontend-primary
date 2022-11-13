@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState , useEffect} from "react";
 import './Home.css';
 import { AudioOutlined,VideoCameraOutlined  } from '@ant-design/icons';
 import ScreenRecordingHome from "./ScreenRecordingHome";
@@ -8,6 +8,11 @@ import workTrackerApi from "../api/workTrackerApi";
 import ScreenRecording from "./ScreenRecording";
 import {useReactMediaRecorder} from "react-media-recorder";
 import {Button} from "antd";
+import shareApi from "../api/shareApi";
+import image1 from "./1.png"
+import image2 from "./2.png"
+import image3 from "./3.png"
+import image4 from "./4.png"
 
 
 const MonitorEmployees = ({ screen=true,
@@ -19,6 +24,7 @@ const MonitorEmployees = ({ screen=true,
 {
     const [logicRecording, setLogicRecording] = useState(true);
     const [logicScreenshot, setLogicScreenshot] = useState(false);
+    const [LogicShare, setLogicShare] = useState(false);
     const [logicRecordingClr, setLogicRecordingClr] = useState('#1FAFA8');
     const [logicScreenshotClr, setLogicScreenshotClr] = useState('#8DDECB');
     const [logicRespond, setLogicRespond] = useState(false);
@@ -28,6 +34,16 @@ const MonitorEmployees = ({ screen=true,
     const [screenshotLogic , setScreenshotLogic] = useState(false)
 
     const [recordingNumber, setRecordingNumber] = useState(0);
+
+    const[imageUrl ,setImageUrl] = useState("")
+    const[latestId , setLatestId] = useState(0)
+    const[baseUrl , setBaseUrl] = useState("")
+    const[buttoKey , setButtonKey] = useState("Share")
+    const[imageUpload , setImageUpload] = useState(null)
+    const[imgIndex , setImgIndex] = useState(0)
+  
+  
+    const images = [image1 , image2 , image3 , image4]
 
     const {
         status,
@@ -75,6 +91,10 @@ const MonitorEmployees = ({ screen=true,
         }
     };
 
+    function ShareScreen(){
+
+    }
+
     function onclickRecording() {
         if (!logicRecording) {
             setLogicRecording(true)
@@ -102,7 +122,7 @@ const MonitorEmployees = ({ screen=true,
     }
 
 
-    const captureImage = () =>{
+    const captureImageD = () =>{
         html2canvas(document.body).then(function(canvas){
           var a = document.createElement('a')
           a.href = canvas.toDataURL("..assets/image/jpeg").replace("image/jpeg","image/octat-stream");
@@ -116,7 +136,7 @@ const MonitorEmployees = ({ screen=true,
             alert("You cant get screenshot request has not accepted")
         }
         else{
-            captureImage()
+            captureImageD()
             setScreenshotLogic(false)
         }
       }
@@ -130,7 +150,7 @@ const MonitorEmployees = ({ screen=true,
             .then((res) => { 
                 console.log("result - ",res.data)
                 setReqId(res.data)
-                alert(res.data)
+                alert("Request Id : "+res.data)
                 setLogicRespond(true)
             })
       
@@ -152,7 +172,7 @@ const MonitorEmployees = ({ screen=true,
             })
             .then((res) => { 
                 console.log("result - ",res.data)
-                alert(res.data)
+                alert("Response Of Request : "+res.data)
                 if(res.data!="pending"){
                     if(res.data=="accept"){
                         setScreenshotLogic(true)
@@ -167,6 +187,74 @@ const MonitorEmployees = ({ screen=true,
             setLogicRespond(true)
         }
     }
+
+
+
+  if(localStorage.getItem("started")===null){
+    localStorage.setItem("shareLogic","false")
+    localStorage.setItem("started","false")
+  }
+
+  function ShareScreen(){
+    localStorage.setItem("shareLogic","true")
+  }
+
+
+
+  function changeImage(){
+    setImgIndex(imgIndex+1)
+    if(imgIndex>=3){
+      setImgIndex(0)
+    }
+  }
+
+  function StopScreen(){
+
+      localStorage.setItem("shareLogic","false")
+      shareApi.get("/stopMeeting",{
+    })
+    .then((res) => { 
+        console.log("result - ",res.data)
+    })
+  
+  // Catch errors if any
+  .catch((err) => { 
+    console.log(err)
+  });
+  }
+
+
+  const captureImage = () =>{
+    html2canvas(document.body).then(function(canvas){
+      var a = document.createElement('a')
+      a.href = canvas.toDataURL("..assets/image/jpeg").replace("image/jpeg","image/octat-stream");
+      setBaseUrl(canvas.toDataURL("..assets/image/jpeg").replace("image/jpeg","image/octat-stream"))
+
+      shareApi.post("/setUrl",{
+        url : a.href
+    })
+    .then((res) => { 
+        console.log("result - ",res.data)
+    })
+  
+  // Catch errors if any
+  .catch((err) => { 
+    console.log(err)
+  });
+    })
+  }
+  var timer
+  useEffect(()=>{
+    timer = setInterval(()=>{
+    
+                var logicS = localStorage.getItem("shareLogic")           
+                if(logicS==="true"){
+                   captureImage()
+                }
+  },500)
+  return()=>clearTimeout(timer)
+  },[])
+
     return(
         <>
         <div>
@@ -185,6 +273,19 @@ const MonitorEmployees = ({ screen=true,
                                 Screenshot
                             </button>
                         </td>
+                        <td>
+                        <button className="hRecordingBtn"
+                            onClick={ShareScreen} style={{backgroundColor:logicScreenshotClr}}>
+                                ShareScreen
+                            </button>
+                        </td>
+
+                        <td>
+                        <button className="hRecordingBtn"
+                            onClick={StopScreen} style={{backgroundColor:logicScreenshotClr}}>
+                                StopShare
+                            </button>
+                        </td>
                     </tr>
                 </table>
             </div>
@@ -200,6 +301,12 @@ const MonitorEmployees = ({ screen=true,
                         <td><AudioOutlined 
                         style={{fontSize:'2.5vw',  color:'#1FAFA8', marginLeft:'2vw'}} /></td>
                         </tr>
+                        <button style={{ marginBottom: '10px' }} onClick={changeImage}>
+          Move
+        </button>
+        <div >
+        <img src={images[imgIndex]} alt="Still No" style={{width:"20vw" , height:"20vw" , top:"0" , left:"0"}}></img>
+        </div>
                     </table>
                 </div>
                 </div>
