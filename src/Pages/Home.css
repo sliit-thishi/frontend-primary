@@ -180,6 +180,10 @@
     cursor: pointer;
 }
 
+.scheduleBtn:hover{
+    opacity: 0.5;
+}
+
 .scheduleCheckbox{
     color: #066B66;
     height: 2vw;
@@ -188,4 +192,21 @@
 }
 
 
+.msg{
+    color:#066B66;
+    font-size: 1.2vw;
+    font-weight: 500;
 
+}
+
+.msg1{
+    color:#049992;
+    font-size: 1.2vw;
+    padding-left: 2vw;
+}
+
+
+.msgBody{
+    padding-top: 1vw;
+    padding-left: 1.5vw;
+}

@@ -17,6 +17,7 @@ function Meetings()
 {
 
   const [employeesAdd , setEmployeesAdd] = useState([])
+  const [empId , setEmpId] = useState(2)
   const [employees , setEmployees] = useState([]);
   const [addEmpLogic , setAddEmpLogic] = useState(false)
   const [startMeetingLogic , setStartMLogic] = useState(false)
@@ -27,7 +28,7 @@ function Meetings()
 
   useEffect(()=>{
     setStartMLogic(false)
-    workTrackerApi.get("/getEmployees",{
+    workTrackerApi.get("/getEmployees/"+empId,{
 
     })
     .then((res) => { 
@@ -54,7 +55,7 @@ function Meetings()
     })
     .then((res) => { 
         console.log("result - ",res.data)
-       // alert(res.data)
+        alert(res.data)
         if(res.data=="started"){
           
           setStartMLogic(true)

@@ -293,17 +293,17 @@ function AssignedEmployees()
           <div>
             {receiveLogic? <div>
                 {massage.length!=0 && massages.map((msg)=>(
-                <p>{msg.massage} -: from -  {msg.senderName} </p>
+                <p className="msgBody"> <span className="msg"> From: {msg.senderName}...</span> <span className="msg1">{msg.massage}</span> </p>
             ))}
                 </div>:<div>
                 {sentLogic && <div>
                 {massage.length!=0 && massages.map((msg)=>(
-                <p>{msg.massage} -: to - {msg.receiverName}</p>
+                <p className="msgBody"><span className="msg">To: {msg.receiverName}... </span> <span className="msg1">{msg.massage} </span></p>
             ))}
                 </div>}
                     </div>}  </div>         
 
-            <div style={{marginLeft:'3vw', marginTop:'18vw', position:'fixed'}}>
+            <div style={{marginLeft:'3vw', marginTop:'24vw', position:'fixed'}}>
               <table>
                 <tr>
                   <td>
@@ -313,7 +313,7 @@ function AssignedEmployees()
                                  style={{fontSize:'2vw', color:'#066B66', paddingTop:'0.5vw', marginLeft:'0.4vw'}}/></td>
                   <td><FileImageOutlined 
                                  style={{fontSize:'2vw', color:'#066B66', paddingTop:'0.5vw', marginLeft:'0.4vw'}}/></td>
-                                 <td><button className="scheduleBtn" style={{width:'8vw', height:'2.2vw', marginLeft:'2vw', backgroundColor:'transparent', color:'black'}} onClick={sendMassage}>Send </button></td>
+                                 <td><button className="scheduleBtn" style={{width:'7vw', height:'2.4vw', marginLeft:'1.5vw', backgroundColor:'#066B66', color:'white', border:'none'}} onClick={sendMassage}>Send </button></td>
                 </tr>
                 </table>
             </div>
