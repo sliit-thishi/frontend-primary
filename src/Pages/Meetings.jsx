@@ -43,40 +43,9 @@ function Meetings()
       
     },[])
 
-    function testMl(){
-      workTrackerApiCopy.get("/model?id=5",{
-        })
-        .then((res) => { 
-            console.log("result - ",res.data)
-            alert(res.data)
-        })
-  
-      .catch((err) => { 
-        console.log(err)
-      });
-  }
-
 
   function scheduelMeeting(){
     setScheduleMeetingLogic(true);
-    if(!addEmpLogic){
-      alert("add employees first")
-      return
-    }
-    const meeting = {org_emp_id:1}
-  
-    workTrackerApi.post("/addMeeting",{
-      meeting:meeting,
-      employees:employeesAdd
-    })
-    .then((res) => { 
-        console.log("result - ",res.data)
-        alert(res.data)
-    })
-
-  .catch((err) => { 
-    console.log(err)
-  });
   }
 
   function startMeeting(){
@@ -85,7 +54,7 @@ function Meetings()
     })
     .then((res) => { 
         console.log("result - ",res.data)
-        alert(res.data)
+       // alert(res.data)
         if(res.data=="started"){
           
           setStartMLogic(true)
@@ -96,13 +65,6 @@ function Meetings()
     console.log(err)
   });
   }
-
-function addEmpMeeting(id){
-  employeesAdd.push(id)
-  alert("added " + id)
-  alert(employeesAdd)
-  setAddEmpLogic(true)
-}
 
     return(
         <>
@@ -204,13 +166,11 @@ function addEmpMeeting(id){
                         style={{fontSize:'2vw',  color:'#1FAFA8', marginLeft:'1vw'}} />
                     </td>
                     <td>
-                        <h3 style={{fontSize:'1.2vw', color:'#066B66', fontWeight:'600'}}>{employeeList.empName} <br/><span style={{fontSize:'0.9vw', color:'#066B66', fontWeight:'550'}}>{employeeList.empPosition} </span></h3>
+                        <h3 style={{fontSize:'1.2vw', color:'#066B66', fontWeight:'600'}}>{employeeList.name} <br/><span style={{fontSize:'0.9vw', color:'#066B66', fontWeight:'550'}}>{employeeList.empPosition} </span></h3>
                       
                     </td>
                     <td>
-                        <div>
-                            <button style={{height:'2vw', width:'8vw', borderRadius:'1vw', fontSize:'0.8vw',top:'0', color:'#066B66', marginLeft:'2.4vw', border:'none', boxShadow:'0.1vw 0.21vw  #d5dddd'}} onClick={e=>addEmpMeeting(employeeList.empId)}>Add to Meeting</button>
-                        </div>
+                        
                       
                     </td>
                     <td>
